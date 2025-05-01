@@ -1,6 +1,5 @@
-// Create a User object with properties like name, stepsWalked (an array of daily steps),
-//  and a method totalSteps() that calculates and returns the total number of steps walked.
-//  Add another method averageSteps() that returns the average steps per day.
+// Create a User object with properties like name, stepsWalked (an array of daily steps),  and a method totalSteps() that calculates and returns the total number of steps walked. Add another method averageSteps() that returns the average steps per day.
+//Steps
 function Userproperty(name,steps){
     this.name=name;
     this.steps=steps;
