@@ -1,23 +1,27 @@
-// Create a User object with properties like name, stepsWalked (an array of daily steps),  and a method totalSteps() that calculates and returns the total number of steps walked. Add another method averageSteps() that returns the average steps per day.
+// Create a User object with properties like name, stepsWalked (an array of daily steps),  and a method totalSteps() that calculates and returns the total number of steps walked.
+//  Add another method averageSteps() that returns the average steps per day.
 //Steps
 //pseudocode
 // 1.creating an object with properties
 // 2.enter the name and steps walked daily
 // 3.creating a method that calculates the number of steps walked daily
-const User={
+const user={
     name:"Jane",
-    steps:[2,5,6,7,10],
-    stepsWalked:function(){
+    stepsWalked:function(steps){
         let sum=0;
-      for(let i=0;i<this.steps.length;i++){
-         sum=sum+this.steps[i];
+      for(let i=0;i<steps.length;i++){
+         sum=sum+steps[i];
       }
       return `The walked steps is eqaul to ${sum}`;
-    }
-}
-const user=new User("Jane",)
+    },
+    averageSteps:function(steps){
+       let sum=steps.reduce((step, currentStep) => step + currentStep, 0)
+       const average=sum/steps.length;
+       return average;
+}}
 console.log(user);
-console.log(user.stepsWalked());
+console.log(user.stepsWalked([2,34,4,4,8]));
+console.log(user.averageSteps([2,34,4,4,8]));
 
 // Create a Recipe constructor with name, ingredients (array), and cookTime in minutes. Add a method displayRecipe() that logs the name and all ingredients in a readable list,  and another method isQuickMeal() that returns true if cookTime is 30 minutes or less.
 // 1.creating constructors with properties(recipe name,ingredients,cookTime in minutes)
@@ -46,21 +50,20 @@ console.log(recipe.isQuickmeal());
 // 1.creating car object with properties(model,mileage,serviceHistory)
 // 2. creating a method to add new service record
 // 3. creating  a method to the most recent service date
-function Car(model,mileage,serviceHistory){
-    this.model=model;
-    this.mileage=mileage;
-    this.serviceHistory=serviceHistory;
-    this.addService=function(date){
+const car={
+    model:"Tanta Punch",
+    mileage:"20kmpl",
+    serviceHistory:["12th April 2025","24th April 2025","1st May 2025"],
+    addService:function(date){
        console.log(`I am ${this.model} ${this.mileage} and new service date is ${date}`);
-       serviceHistory=serviceHistory.push(date);
-    }
-    this.lastServiceDate=function(){
+       this.serviceHistory.push(date);
+    },
+    lastServiceDate:function(){
        for(let i=0;i<this.serviceHistory.length;i++){
-        return `The latest service is on ${this.serviceHistory.at(-1)}`;
+        return `The latest service is on ${car.serviceHistory.at(-1)}`;
        }
     }
 }
-const car=new Car("Tanta punch","20kmpl",["12th April 2025","24th April 2025","1st May 2025"]);
 console.log(car);
 car.addService("2nd May 2025");
 console.log(car.lastServiceDate());
@@ -70,27 +73,28 @@ console.log(car.lastServiceDate());
 // 2.creating a method to add song
 //3. creating a method to remove song
 // 4. creating a method to list songs
-function Playlist(songTitles=[]){
-    this.songTitles=songTitles;
-    this.addSong=function(title){
+const playlist={
+    songTitles:["Diamonds","Fein","Element"],
+    addSong:function(title){
         console.log(`Added a new song title: ${title}`);
-        songTitles=songTitles.push(title);
-    }
-    this.removeSong=function(){
+        this.songTitles.push(title);
+    },
+    removeSong:function(){
         for(let i=0;i<this.songTitles.length;i++){
             return this.songTitles.splice(1,1);
         }
-    }
-    this.listSongs=function(){
+    },
+    listSongs:function(){
         for(let i=0;i<this.songTitles.length;i++){
             console.log(this.songTitles[i]);
-        } 
+        }
     }
-}
-const playlist=new Playlist(["Diamonds","Fein","Element"]);
-playlist.addSong("Seven days");
-console.log(playlist.removeSong());
-playlist.listSongs();
+ }
+ playlist.addSong("Seven days");
+ console.log(playlist.removeSong());
+ playlist.listSongs();
+ 
+ 
 
 // Create a Course constructor with title, lessons (an array), and completedLessons (array). Add a method markComplete(lesson) that adds the lesson to completedLessons, and a method getProgress() that returns a string like "3 out of 5 lessons completed".
 // 1. creating a constructor with title property,lessons and completed lessons
@@ -109,7 +113,7 @@ function Course(title,lessons,completedLessons){
      return `${completed.length} out of ${this.lessons.length} lessons completed`
 }
 }
-const course=new Course("Program",[{lesson:"Math",percent:60},{lesson:"Science",percent:100}],["Phyisics","Entrepreneurship","Sports"]);
+const course=new Course("Program",[{lesson:"Math",percent:60},{lesson:"Science",percent:100},{lesson:"Science",percent:100}],["Phyisics","Entrepreneurship","Sports"]);
 console.log(course);
 console.log(course.markComplete("Literature"));
 console.log(course.getProgress());
